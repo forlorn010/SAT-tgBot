@@ -1,5 +1,6 @@
-# Inf_Olimp_With_AI-TgBot
-Telegram bot with Olympiad programming problems and AI-powered solutions
+# Sat-tgBot
+Telegram bot with SAT problems and AI-powered explanations
+
 
 Requirements:
     pip install -r requirements.txt
