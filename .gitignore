@@ -207,4 +207,8 @@ marimo/_lsp/
 __marimo__/
 
 # Database file
-bot_data_base.sql
+*.sql
+*.db
+
+#coding plan
+plan.txt

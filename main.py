@@ -2,13 +2,13 @@ import asyncio
 from aiogram import Dispatcher, Bot
 from config import TOKEN
 from handlers.menus import command_router, set_menu, set_commands
-from handlers.callbacks import keyboard_router
+from handlers.callbacks import callback_router
 from db import init_db
 
 
 dp = Dispatcher()
 dp.include_router(command_router)
-dp.include_router(keyboard_router)
+dp.include_router(callback_router)
 bot = Bot(token=TOKEN)
 
 

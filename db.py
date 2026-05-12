@@ -1,6 +1,6 @@
 import aiosqlite
 
-DB_NAME = "bot_data_base.sql"
+DB_NAME = "bot_data_base.db"
 
 async def init_db():
     async with aiosqlite.connect(DB_NAME) as db:
