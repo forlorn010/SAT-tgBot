@@ -4,7 +4,7 @@ from config import TOKEN
 from handlers.menus import command_router, set_menu, set_commands
 from handlers.callbacks import callback_router
 from db import init_db
-
+from locales.locales import load_languages
 
 dp = Dispatcher()
 dp.include_router(command_router)
@@ -14,6 +14,9 @@ bot = Bot(token=TOKEN)
 
 async def main():
     print('Bot is running...')
+
+    #load languages
+    load_languages()
 
     #data_base init
     await init_db()
