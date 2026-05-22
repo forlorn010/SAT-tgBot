@@ -2,6 +2,7 @@ import json
 
 def load_languages():
     global languages
+    languages = {}
     for lang in ['en', 'ru']:
         with open(f'locales/{lang}.json', 'r', encoding='utf-8') as f:
             languages[lang] = json.load(f)

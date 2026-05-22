@@ -1,8 +1,10 @@
 import asyncio
 from aiogram import Router, F
 from aiogram.filters import Command
-from aiogram.types import Message, MenuButtonCommands, BotCommand
+from aiogram.types import Message, MenuButtonCommands, BotCommand, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from locales.locales import t
+
 
 command_router = Router()
 
@@ -19,11 +21,16 @@ async def set_commands(bot):
 
 # /start handler - language selection
 @command_router.message(Command('start'))
-async def start(message: Message):
+async def show_language_choose_manu(message: Message):
     languages_keyboard = InlineKeyboardBuilder()
     languages_keyboard.button(text='English🇬🇧', callback_data=f'{message.from_user.id}:language_selection_en')
     languages_keyboard.button(text='Русский🇷🇺', callback_data=f'{message.from_user.id}:language_selection_ru')
 
     await message.answer('Hello!👋 Choose the language you want to use:\nПривет!👋 Выбери язык, который хочешь использовать:'
                             , reply_markup=languages_keyboard.as_markup())
-                         
+
+
+async def show_main_menu(callback: CallbackQuery):
+    main_menu_keyboard = InlineKeyboardBuilder()
+    main_menu_keyboard.button(text=t())
+    

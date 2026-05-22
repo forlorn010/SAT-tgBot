@@ -15,7 +15,7 @@ bot = Bot(token=TOKEN)
 async def main():
     print('Bot is running...')
 
-    #load languages
+    #load locales
     load_languages()
 
     #data_base init

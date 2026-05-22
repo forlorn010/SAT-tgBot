@@ -1,0 +1,10 @@
+services:
+  redis:
+    image: redis:7-alpine        
+    container_name: redis_prod   
+    restart: always              
+    ports:
+      - "6379:6379"              
+    command: redis-server --save 60 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./data:/data             
