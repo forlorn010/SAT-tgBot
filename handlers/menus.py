@@ -3,8 +3,12 @@ from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message, MenuButtonCommands, BotCommand, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from locales.locales import t
+from locales.locales import t, get_user_language_cached
+from redis.asyncio import Redis
 
+
+#cache for user language
+redis = Redis.from_url("redis://localhost:6379/0")
 
 command_router = Router()
 
