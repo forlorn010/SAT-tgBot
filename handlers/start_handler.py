@@ -7,6 +7,8 @@ import sys
 sys.path.append(str(Path(__file__).parent.parent))
 from db import set_user_and_language
 from locales.locales import cache_user_language
+from handlers.main_menu import show_main_menu
+
 start_router = Router()
 
 # Commands' menu setup
@@ -43,6 +45,8 @@ async def language_selection_en(callback: CallbackQuery):
     # Cache in Redis
     await cache_user_language(user_id, lang_code)
 
+    main_menu_text, main_menu_reply_markup = await show_main_menu(user_id)
+    await callback.message.edit_text(text=main_menu_text, reply_markup=main_menu_reply_markup, parse_mode='HTML')
 
 @start_router.callback_query(F.data.endswith(':language_selection_ru'))
 async def language_selection_ru(callback: CallbackQuery):
@@ -55,3 +59,6 @@ async def language_selection_ru(callback: CallbackQuery):
     
     # Cache in Redis
     await cache_user_language(user_id, lang_code)
+
+    main_menu_text, main_menu_reply_markup = await show_main_menu(user_id)
+    await callback.message.edit_text(text=main_menu_text, reply_markup=main_menu_reply_markup, parse_mode='HTML')
