@@ -1,16 +1,17 @@
 import asyncio
 from aiogram import Dispatcher, Bot
 from config import TOKEN
-from handlers.menus import command_router, set_menu, set_commands
-from handlers.callbacks import callback_router
+from handlers.main_menu import main_menu_router
+from handlers.start_handler import start_router, set_menu, set_commands
 from db import init_db
 from locales.locales import load_languages
 
 
 dp = Dispatcher()
-dp.include_router(command_router)
-dp.include_router(callback_router)
+dp.include_router(main_menu_router)
+dp.include_router(start_router)
 bot = Bot(token=TOKEN)
+
 
 async def main():
     print('Bot is running...')
