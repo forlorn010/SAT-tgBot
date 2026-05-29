@@ -1,3 +1,7 @@
 {
-    
+	"main_menu_text": "👋 Welcome to SAT-Solver Bot!\n📐This bot contains SAT Math problems and step-by-step solutions.\n\n1️⃣ Get a fully random problem from the database.\n2️⃣ Or customize problem selection by topic.\n\n<i>If you found a bug, have suggestions, or want to support the project - contact @ffrlorn</i>",
+	"random_problem": "Random Problem",
+	"customize": "Customize",
+	"settings": "Settings",
+	"info_bot": "About Bot"
 }

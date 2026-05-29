@@ -36,5 +36,34 @@ async def show_language_choose_manu(message: Message):
 
 async def show_main_menu(callback: CallbackQuery):
     main_menu_keyboard = InlineKeyboardBuilder()
-    main_menu_keyboard.button(text=t())
+    # get user language and build localized buttons
+    lang = await get_user_language_cached(callback.from_user.id)
+
+    main_menu_keyboard.button(
+        text=f"{t(lang, 'random_problem')} 🎲",
+        callback_data=f"{callback.from_user.id}:random_problem"
+    )
+
+    main_menu_keyboard.button(
+        text=f"{t(lang, 'customize')} ⚙️",
+        callback_data=f"{callback.from_user.id}:customize"
+    )
+
+    # settings and info side-by-side
+    main_menu_keyboard.button(
+        text=f"{t(lang, 'settings')} 🛠️",
+        callback_data=f"{callback.from_user.id}:settings"
+    )
+
+    main_menu_keyboard.button(
+        text=f"{t(lang, 'info_bot')} ℹ️",
+        callback_data=f"{callback.from_user.id}:info_bot"
+    )
+
+    # layout: one button per row for first two, then two buttons on final row
+    main_menu_keyboard.adjust(1, 1, 2)
+
+    # send localized main menu text and keyboard
+    await callback.message.answer(t(lang, 'main_menu_text'), reply_markup=main_menu_keyboard.as_markup())
+    await callback.answer()
     
